@@ -1,2 +1,2 @@
-# Task-Management
-Dự án quán lý công việc cá nhân 
+# TaskManager
+Dự án Quản lý công việc
