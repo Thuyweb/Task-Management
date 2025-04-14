@@ -137,6 +137,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         line-height: 1.5;
     }
 
+    .spaced-text {
+        line-height: 1.5;
+    }
+
     form {
         margin-top: 20px;
     }
@@ -185,11 +189,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container">
         <h1>Chào mừng đến với Task Management</h1>
         <p class="description">
-            Dịch vụ thông báo nhắc hẹn của chúng tôi giúp bạn không bỏ lỡ bất kỳ công việc quan trọng nào.
-            Hãy đăng ký ngay để nhận thông báo qua email mỗi khi có công việc sắp đến hạn chót!
+            Đừng lo nếu bạn sợ bỏ lỡ công việc quan trọng, chúng tôi đồng hành cùng bạn.
+            Chúng tôi sẽ lọc ra và nhắc nhở công việc đến hạn chót.
+            Thông báo sẽ hiển thị đầy đủ, giúp bạn không bỏ sót công việc nào!
         </p>
         <form method="POST">
-            <p>Bạn muốn nhận thông báo khi sắp đến hạn chót?</p>
+            <p class="spaced-text">Bạn có muốn chúng tôi giúp bạn kiểm tra và thông báo<br> những công việc gần đến hạn
+                ngay
+                bây giờ không?</p>
             <label>
                 <input type="radio" name="notify" value="yes" required> Có
             </label>
@@ -209,10 +216,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     document.querySelectorAll('input[name="notify"]').forEach(radio => {
         radio.addEventListener('change', function() {
             const emailInput = document.getElementById('emailInput');
+            const emailField = emailInput.querySelector('input[name="email"]');
+
             if (this.value === 'yes') {
-                emailInput.style.display = 'block';
+                emailInput.style.display = 'block'; // Hiển thị form nhập email
+                emailField.required = true; // Bắt buộc nhập email nếu chọn "Có"
             } else {
-                emailInput.style.display = 'none';
+                emailInput.style.display = 'none'; // Ẩn form nhập email
+                emailField.required = false; // Không bắt buộc nhập email nếu chọn "Không"
             }
         });
     });
