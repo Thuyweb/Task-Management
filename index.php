@@ -89,7 +89,18 @@ try {
                 </tr>
             <?php else: ?>
                 <?php foreach ($tasks as $row): ?>
-                    <tr data-id="<?= $row['id'] ?>">
+                    <tr data-deadline="<?= $row['due_date'] ?>" id="row_<?= $row['id'] ?>" data-id="<?= $row['id'] ?>"style=
+                    "color:
+                    <?php
+                    $todayDate = date("Y-m-d");
+                    if ($row['completed']) {
+                    echo 'green';
+                    } elseif ($row['due_date'] < $todayDate) {
+                    echo 'red';
+                    } else {
+                    echo 'black';
+                    }
+                    ?>;">
                         <td><?= htmlspecialchars($row['title']) ?></td>
                         <td><?= htmlspecialchars($row['description']) ?></td>
                         <td><?= htmlspecialchars($row['due_date']) ?></td>
@@ -155,6 +166,16 @@ try {
             checkbox.addEventListener('change', function() {
                 const id = this.getAttribute('data-id');
                 const completed = this.checked ? 1 : 0;
+                const row = document.getElementById('row_' + id);
+                const deadline = row.getAttribute('data-deadline');
+                const todayDate = new Date().toISOString().split('T')[0];
+                if (completed === 1) {
+                 row.style.color = 'green';
+                } else if (deadline < todayDate) {
+                row.style.color = 'red';
+                } else {
+                 row.style.color = 'black';
+                }
 
                 fetch('check_box.php', {
                         method: 'POST',
