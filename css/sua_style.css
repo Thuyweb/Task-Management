@@ -1,0 +1,88 @@
+/* CSS tùy chỉnh */
+body {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    /* Hiệu ứng nền gradient */
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.container {
+    max-width: 600px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    /* Hiệu ứng bóng */
+    overflow: hidden;
+    animation: fadeIn 1s ease-in-out;
+    /* Hiệu ứng mượt */
+}
+
+.card-header {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    /* Gradient cho header */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    transition: all 0.3s ease-in-out;
+    padding: 10px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #6a11cb;
+    box-shadow: 0 0 10px rgba(106, 17, 203, 0.5);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    transform: scale(1.05);
+    /* Hiệu ứng phóng to nhẹ */
+    box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+}
+
+.mb-3 {
+    margin-bottom: 20px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

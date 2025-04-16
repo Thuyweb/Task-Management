@@ -258,3 +258,17 @@ input {
 .social-container a:hover {
   border: 1px solid #7dc642;
 }
+.container button{
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid #7dc642;
+  background-color: #7dc642;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 10px;
+  padding: 12px 80px;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  transition: 0.3s ease-in-out;
+}
