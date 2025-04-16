@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // Kết nối cơ sở dữ liệu
-require 'config.php';
+require '../config.php';
 
 try {
     // Lấy danh sách người dùng và email của họ
