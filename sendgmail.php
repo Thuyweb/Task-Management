@@ -37,14 +37,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tasks = $stmt->fetchAll();
 
             if (!empty($tasks)) {
-                // Tạo nội dung email
-                $emailBody = "Xin chào,\n\nDưới đây là danh sách các công việc sắp đến hạn chót của bạn (trong 3 ngày tới):\n\n";
-                foreach ($tasks as $task) {
-                    $emailBody .= "- " . htmlspecialchars($task['title']) . " (Hạn chót: " . $task['due_date'] . ")\n";
-                }
-                $emailBody .= "\nHãy đảm bảo hoàn thành các công việc này đúng hạn!\n\nTrân trọng,\nĐội ngũ Task Manager";
-
-                $mail = new PHPMailer(true);
+                // Gửi email xác nhận
+            $emailBody = "Xin chào,\n\nCảm ơn bạn đã đăng ký dịch vụ thông báo công việc sắp đến hạn chót từ Task Manager! 🎉\n\n"
+            . "Từ bây giờ, chúng tôi sẽ gửi thông báo đến email của bạn mỗi khi có công việc sắp đến hạn chót. "
+            . "Hãy yên tâm rằng bạn sẽ không bỏ lỡ bất kỳ nhiệm vụ quan trọng nào.\n\n"
+            . "Nếu bạn có bất kỳ câu hỏi hoặc cần hỗ trợ, vui lòng liên hệ với chúng tôi qua email support@taskmanager.local.\n\n"
+            . "Trân trọng,\n"
+            . "Đội ngũ Task Manager";
+            $mail = new PHPMailer(true);
+            
 
                 try {
                     // Cấu hình SMTP với Gmail
@@ -55,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $mail->Password = 'dsng cdbe cktc ctux'; // Thay bằng mật khẩu ứng dụng Gmail
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Sử dụng mã hóa TLS
                     $mail->Port = 587; // Cổng SMTP của Gmail
-
+                     
                     // Cấu hình email
                     $mail->CharSet = 'UTF-8'; // Thiết lập mã hóa UTF-8
                     $mail->setFrom('phpkt2muc5@gmail.com', 'Task Manager'); // Email gửi đi
@@ -97,92 +98,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="vi">
-
+<link rel="stylesheet" href="css/send_email.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông báo nhắc hẹn - Task Management</title>
-    <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f9;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-
-    .container {
-        background: #ffffff;
-        padding: 20px 30px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        max-width: 500px;
-        width: 100%;
-        text-align: center;
-    }
-
-    h1 {
-        color: #333333;
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-
-    p.description {
-        color: #555555;
-        font-size: 16px;
-        margin-bottom: 20px;
-        line-height: 1.5;
-    }
-
-    .spaced-text {
-        line-height: 1.5;
-    }
-
-    form {
-        margin-top: 20px;
-    }
-
-    label {
-        font-size: 16px;
-        color: #333333;
-        margin-right: 10px;
-    }
-
-    input[type="radio"] {
-        margin-right: 5px;
-    }
-
-    #emailInput {
-        margin-top: 15px;
-    }
-
-    input[type="email"] {
-        width: 100%;
-        padding: 10px;
-        margin-top: 10px;
-        border: 1px solid #cccccc;
-        border-radius: 4px;
-        font-size: 14px;
-    }
-
-    button[type="submit"] {
-        background-color: #007bff;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-top: 20px;
-    }
-
-    button[type="submit"]:hover {
-        background-color: #0056b3;
-    }
-    </style>
+    
 </head>
 
 <body>
